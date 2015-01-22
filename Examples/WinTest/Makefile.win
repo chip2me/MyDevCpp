@@ -1,0 +1,33 @@
+# Project: WinTest
+# Makefile created by Dev-C++ 5.4.2
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+RES      = WinTest.res
+OBJ      = Test.o $(RES)
+LINKOBJ  = Test.o $(RES)
+LIBS     = -L"C:/Program Files/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib32" -static-libgcc -mwindows -m32
+INCS     = -I"C:/Program Files/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include"
+CXXINCS  = -I"C:/Program Files/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include"
+BIN      = WinTest.exe
+CXXFLAGS = $(CXXINCS) -m32
+CFLAGS   = $(INCS) -m32
+RM       = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+Test.o: Test.c
+	$(CPP) -c Test.c -o Test.o $(CXXFLAGS)
+
+WinTest.res: WinTest.rc 
+	$(WINDRES) -i WinTest.rc -F pe-i386 --input-format=rc -o WinTest.res -O coff 

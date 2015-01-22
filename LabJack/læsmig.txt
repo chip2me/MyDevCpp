@@ -1,0 +1,4 @@
+Testet 23. dec 2009
+
+De to foldere: U6 og U3
+Her er der hul igennem U3, men ikke U6
